@@ -48,14 +48,13 @@
             </div>
             <!-- /.col -->
             <div class="col-4">
-                <button type="submit" class="btn btn-primary btn-block">
+                <button type="submit" class="btn btn-block btn-outline-success">
                     {{ __('Sign In') }}
                 </button>
             </div>
             <!-- /.col -->
         </div>
     </form>
-
     {{-- <div class="social-auth-links text-center mb-3">
                     <p>- OR -</p>
                     <a href="#" class="btn btn-block btn-primary">
@@ -64,7 +63,7 @@
                     <a href="#" class="btn btn-block btn-danger">
                         <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
                     </a>
-                </div> --}}
+                </div> --}}                
     <!-- /.social-auth-links -->
     @if (Route::has('password.request'))
         <p class="mb-1">

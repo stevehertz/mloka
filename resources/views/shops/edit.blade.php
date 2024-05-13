@@ -53,6 +53,23 @@
                                 </div>
 
                                 <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="shopCountry">
+                                                @lang('labels.shops.fields.country')
+                                            </label>
+                                            <select name="country" class="form-control select2" style="width: 100%;">
+                                                <option selected="selected" disabled="disabled">Select @lang('labels.shops.fields.country')</option>
+                                                @foreach ($countries as $code => $name)
+                                                    <option>{{ $name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
                                             <label for="shopName">
@@ -93,21 +110,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="shopCountry">
-                                                @lang('labels.shops.fields.country')
-                                            </label>
-                                            <select name="country" class="form-control select2" style="width: 100%;">
-                                                <option selected="selected" disabled="disabled">Select @lang('labels.shops.fields.country')</option>
-                                                @foreach ($countries as $code => $name)
-                                                    <option>{{ $name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                                 <div class="row">
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">

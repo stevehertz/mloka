@@ -24,6 +24,7 @@ class Shop extends Model
         'phone',
         'email',
         'status',
+        'default',
         'created_by',
         'updated_by',
         'deleted_by'

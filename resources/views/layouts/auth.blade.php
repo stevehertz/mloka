@@ -26,7 +26,9 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="/"><b>M</b>LOKA</a>
+            <a href="/">
+                <img src="{{ asset('img/logo/logo.png') }}" alt="{{ config('app.name') }}">
+            </a>
         </div>
         <!-- /.login-logo -->
         <div class="card">

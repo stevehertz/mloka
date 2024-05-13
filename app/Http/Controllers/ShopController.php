@@ -27,10 +27,8 @@ class ShopController extends Controller
     {
         //
         $user = Auth::user();
-        $data = $this->shopRepository->getUserShops($user);
-        return view('shops.index', [
-            'data' => $data
-        ]);
+        $data = $this->shopRepository->getDefaultUserShop($user);
+        return redirect()->route('dashboard', $data->id);
     }
 
     /**
