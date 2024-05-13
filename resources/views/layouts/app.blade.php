@@ -8,7 +8,7 @@
     @include('components.styles')
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed accent-primary">
+<body class="hold-transition sidebar-mini layout-fixed accent-primary layout-navbar-fixed">
     <div class="wrapper">
 
         <!-- Preloader -->
