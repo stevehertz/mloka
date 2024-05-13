@@ -33,4 +33,9 @@ class Shop extends Model
     protected $dates = [
         'deleted_at'
     ];
+
+    public function customer()  
+    {
+        return $this->hasMany(Customer::class, 'shop_id');    
+    }
 }

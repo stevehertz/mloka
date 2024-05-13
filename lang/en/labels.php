@@ -14,4 +14,20 @@ return [
             'email' => 'Email Address'
         ],
     ],
+    'users' => [
+        'title' => 'Users',
+        'fields' => [
+            'first_name' => 'First Name',
+            'last_name' => 'Last Name',
+            'phone' => 'Phone Number',
+            'email' => 'Email Address',
+            'gender' => 'Gender'
+        ],
+    ],
+    'customers' => [
+        'title' => 'Customers',
+        'fields' => [
+            'location' => 'Location'
+        ],
+    ]
 ];
