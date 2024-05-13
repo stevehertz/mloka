@@ -53,15 +53,18 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>
-                                                    {{ $shop->name }}
+                                                    <a href="{{ route('dashboard', $shop->id) }}">
+                                                        {{ $shop->name }}
+                                                    </a>
                                                 </td>
                                                 <td>
-                                                    
+
                                                 </td>
                                                 <td>
-                                                    <button type="button" class="btn btn-block btn-outline-primary btn-sm">
+                                                    <a href="{{ route('dashboard', $shop->id) }}"
+                                                        class="btn btn-block btn-outline-primary btn-sm">
                                                         <i class="fas fa-eye"></i>
-                                                    </button>
+                                                    </a>
                                                 </td>
                                             </tr>
                                         @empty
@@ -69,9 +72,6 @@
                                                 <td colspan="4" class="text-center">No Shops Found. Please Register!</td>
                                             </tr>
                                         @endforelse
-
-
-
                                     </tbody>
                                 </table>
                             </div>
