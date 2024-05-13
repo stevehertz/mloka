@@ -32,4 +32,17 @@ class Gender {
         }  
     }
 
+    public static function getValue($name)  
+    {
+        switch($name)
+        {
+            case $name == 'Male' || $name == 'MALE' || $name = 'male':
+                return self::MALE;
+            case $name == 'Female' || $name == 'FEMALE' || $name = 'female':
+                return self::FEMALE;
+            default:
+                return self::OTHERS;
+        }
+    }
+
 }

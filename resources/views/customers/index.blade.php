@@ -30,8 +30,11 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="card-tools">
-                                <button type="button" id="newCustomerBtn" class="btn btn-block btn-sm btn-outline-success">
+                                <button type="button" id="newCustomerBtn" class="btn btn-sm btn-outline-success">
                                     New Customer
+                                </button>
+                                <button type="button" id="importCustomersBtn" class="btn btn-sm btn-outline-success">
+                                    Import
                                 </button>
                             </div>
                         </div>
@@ -85,6 +88,7 @@
             </div>
         </div>
         @include('customers.modal.newCustomer')
+        @include('customers.modal.import')
     </section>
 
 @endsection

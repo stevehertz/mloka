@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Customers;
 use App\Models\Shop;
 use App\Models\Customer;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Customers\ImportCustomersRequest;
 use App\Repositories\CustomersRepository;
 use App\Http\Requests\Customers\StoreCustomerRequest;
 use App\Http\Requests\Customers\UpdateCustomerRequest;
+use App\Imports\CustomersImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CustomerController extends Controller
 {
@@ -74,19 +77,16 @@ class CustomerController extends Controller
     }
 
     /**
-     * Show the form for importing resources.
-     */
-    public function importFile(Shop $shop)
-    {
-        //
-    }
-
-    /**
      * Import  resources in storage.
      */
-    public function import()  
+    public function import(ImportCustomersRequest $request, Shop $shop)  
     {
-        
+        $file = $request->file('file');
+        Excel::import(new CustomersImport($shop), $file);
+        return response()->json([
+            'status' => true,
+            'message' => 'Customers imported successfully'
+        ]);
     }
 
     /**
