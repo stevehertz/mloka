@@ -1,17 +1,17 @@
 <script>
     $(document).ready(function() {
 
-        $(document).on('click', '#newCustomerBtn', function(e) {
+        $(document).on('click', '#newProductBtn', function(e) {
             e.preventDefault();
-            $('#newCustomerForm').trigger("reset");
-            $('#newCustomerModal').modal('show');
+            $('#newProductForm').trigger("reset");
+            $('#newProductModal').modal('show');
         });
 
-        $('#newCustomerForm').submit(function(e) {
+        $('#newProductForm').submit(function(e) {
             e.preventDefault();
             let form = $(this);
             let formData = new FormData(form[0]);
-            let path = '{{ route('customers.store', $shop->id) }}';
+            let path = '{{ route('products.store', $shop->id) }}';
             $.ajax({
                 type: "POST",
                 url: path,
@@ -31,7 +31,7 @@
                 success: function(data) {
                     if (data['status']) {
                         toastr.success(data['message']);
-                        $('#newCustomerForm')[0].reset();
+                        $('#newProductForm')[0].reset();
                         setTimeout(() => {
                             location.reload();
                         }, 1000);
@@ -50,17 +50,17 @@
 
         });
 
-        $(document).on('click', '#importCustomersBtn', function(e) {
+        $(document).on('click', '#importProductsBtn', function(e) {
             e.preventDefault();
-            $('#importCustomersForm').trigger("reset");
-            $('#importCustomersModal').modal('show');
+            $('#importProductsForm').trigger("reset");
+            $('#importProductsModal').modal('show');
         });
 
-        $('#importCustomersForm').submit(function (e) { 
+        $('#importProductsForm').submit(function (e) { 
             e.preventDefault();
             let form = $(this);
             let formData = new FormData(form[0]);
-            let path = '{{ route('customers.import', $shop->id) }}';
+            let path = '{{ route('products.import', $shop->id) }}';
             $.ajax({
                 type: "POST",
                 url: path,
@@ -80,8 +80,8 @@
                 success: function(data) {
                     if (data['status']) {
                         toastr.success(data['message']);
-                        $('#importCustomersForm')[0].reset();
-                        $('#importCustomersModal').modal('hide');
+                        $('#importProductsForm')[0].reset();
+                        $('#importProductsModal').modal('hide');
                         setTimeout(() => {
                             location.reload();
                         }, 1000);

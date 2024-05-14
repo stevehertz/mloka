@@ -10,6 +10,7 @@
             <form id="newCustomerForm">
                 <div class="modal-body">
                     @csrf
+                    <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
                     <div class="row">
                         <div class="col-12 col-md-6">
                             <div class="form-group">

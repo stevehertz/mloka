@@ -6,6 +6,7 @@ class ProductWeightUnits
 {
     public const KG = 1;
     public const LBS = 2;
+    public const UNKNOWN = 0;
 
     public static function toArray(): array
     {
@@ -26,5 +27,18 @@ class ProductWeightUnits
             default:
                 return 'Unknown';
         }  
+    }
+
+    public static function getValue($name)  
+    {
+        switch($name)
+        {
+            case $name == 'KG' || $name == 'Kg' || $name = 'kg':
+                return self::KG;
+            case $name == 'lbs' || $name == 'Lbs' || $name == 'LBS':
+                return self::LBS;
+            default:
+                return self::UNKNOWN;
+        }
     }
 }

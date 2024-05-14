@@ -55,7 +55,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link">
+                    <a href="{{ route('products.index', $shop->id) }}" class="nav-link {{ Route::is('products.index', $shop->id) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-shopping-bag"></i>
                         <p>
                             Products

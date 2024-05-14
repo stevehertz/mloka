@@ -6,6 +6,7 @@ class ProductSizeUnits
 {
     public const CM = 1;
     public const M = 2;
+    public const UNKNOWN = 0;
 
     public static function toArray(): array
     {
@@ -26,5 +27,18 @@ class ProductSizeUnits
             default:
                 return 'Unknown';
         }  
+    }
+
+    public static function getValue($name)  
+    {
+        switch($name)
+        {
+            case $name == 'CM' || $name == 'Cm' || $name = 'cm':
+                return self::CM;
+            case $name == 'm' || $name == 'M':
+                return self::M;
+            default:
+                return self::UNKNOWN;
+        }
     }
 }

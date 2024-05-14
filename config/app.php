@@ -1,6 +1,8 @@
 <?php
 
 use App\Enums\Gender;
+use App\Enums\ProductSizeUnits;
+use App\Enums\ProductWeightUnits;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
@@ -189,7 +191,9 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Countries' => Monarobase\CountryList\CountryListFacade::class,
-        'Gender' => Gender::class
+        'Gender' => Gender::class,
+        'ProductWeightUnits' => ProductWeightUnits::class,
+        'ProductSizeUnits' => ProductSizeUnits::class
     ])->toArray(),
 
 ];

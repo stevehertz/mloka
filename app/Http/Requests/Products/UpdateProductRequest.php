@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Products;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -11,7 +11,7 @@ class UpdateProductRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,14 @@ class UpdateProductRequest extends FormRequest
     {
         return [
             //
+            'name' => ['required', 'string', 'max:191'],
+            'description' => ['nullable'],
+            'weight' => ['required', 'numeric'],
+            'weigh_unit' => ['required', 'integer'],
+            'length' => ['required', 'numeric'],
+            'width' => ['required', 'numeric'],
+            'height' => ['required', 'numeric'], 
+            'size_unit' => ['required', 'integer']
         ];
     }
 }

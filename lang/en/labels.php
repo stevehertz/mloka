@@ -29,5 +29,18 @@ return [
         'fields' => [
             'location' => 'Location'
         ],
-    ]
+    ],
+    'products' => [
+        'title' => 'Products',
+        'fields' => [
+            'name' => 'Product Name',
+            'description' => 'Description',
+            'weight' => 'Product Weight',
+            'weight_unit' => 'Weight Unit',
+            'unit_size' => 'Unit Size',
+            'length' => 'Length',
+            'width' => 'Width',
+            'height' => 'Height'
+        ],
+    ],
 ];

@@ -44,5 +44,4 @@ class Gender {
                 return self::OTHERS;
         }
     }
-
 }
