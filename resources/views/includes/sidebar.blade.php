@@ -1,8 +1,8 @@
-<aside class="main-sidebar elevation-4 sidebar-light-primary">
+<aside class="main-sidebar elevation-4 sidebar-light-success">
     <!-- Brand Logo -->
-    <a href="{{ route('dashboard', $shop->id) }}" class="brand-link bg-primary">
-        <img src="{{ asset('img/AdminLTELogo.png')}}" alt="{{ config('app.name') }}" class="brand-image img-circle elevation-3"
-            style="opacity: .8">
+    <a href="{{ route('dashboard', $shop->id) }}" class="brand-link bg-success">
+        <img src="{{ asset('img/logo/logo_2.png')}}" alt="{{ config('app.name') }}" class="brand-image img-circle elevation-3"
+            style="opacity: .8; background-color: #fff;">
         <span class="brand-text font-weight-light">{{ config('app.name') }}</span>
     </a>
 
@@ -31,8 +31,8 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link ">
+                <li class="nav-item {{ Route::is('percels.send.percel', $shop->id) ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ Route::is('percels.send.percel', $shop->id) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-book-reader"></i>
                         <p>
                             Percels
@@ -41,13 +41,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/forms/general.html" class="nav-link">
+                            <a href="{{ route('percels.send.percel', $shop->id) }}" class="nav-link {{ Route::is('percels.send.percel', $shop->id) ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Send Percel</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/forms/advanced.html" class="nav-link">
+                            <a href="#" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Receive Return</p>
                             </a>

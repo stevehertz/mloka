@@ -1,8 +1,8 @@
-<nav class="main-header navbar navbar-expand-md navbar-light navbar-primary">
+<nav class="main-header navbar navbar-expand-md navbar-light navbar-success">
     <div class="container">
         <a href="#" class="navbar-brand" style="color: #fff;">
-            <img src="{{ asset('img/AdminLTELogo.png') }}" alt="{{ config('app.name') }}"
-                class="brand-image img-circle elevation-3" style="opacity: .8">
+            <img src="{{ asset('img/logo/logo_2.png') }}" alt="{{ config('app.name') }}"
+                class="brand-image img-circle elevation-3" style="opacity: .8; background-color:#fff;">
             <span class="brand-text font-weight-light">{{ config('app.name') }}</span>
         </a>
 

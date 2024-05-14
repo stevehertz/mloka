@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Percel;
-use App\Http\Requests\StorePercelRequest;
-use App\Http\Requests\UpdatePercelRequest;
+use App\Models\ReturnPercel;
+use App\Http\Requests\StoreReturnPercelRequest;
+use App\Http\Requests\UpdateReturnPercelRequest;
 
-class PercelController extends Controller
+class ReturnPercelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class PercelController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePercelRequest $request)
+    public function store(StoreReturnPercelRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class PercelController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Percel $percel)
+    public function show(ReturnPercel $returnPercel)
     {
         //
     }
@@ -43,7 +43,7 @@ class PercelController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Percel $percel)
+    public function edit(ReturnPercel $returnPercel)
     {
         //
     }
@@ -51,7 +51,7 @@ class PercelController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePercelRequest $request, Percel $percel)
+    public function update(UpdateReturnPercelRequest $request, ReturnPercel $returnPercel)
     {
         //
     }
@@ -59,7 +59,7 @@ class PercelController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Percel $percel)
+    public function destroy(ReturnPercel $returnPercel)
     {
         //
     }

@@ -16,8 +16,14 @@ class DashboardController extends Controller
 
     public function index(Shop $shop)  
     {
+        $customers = $shop->customer()->count();
+        $products = $shop->product()->count();
+        $sentPercels = $shop->percel()->count();
         return view('dashboard.index', [
-            'shop' => $shop
+            'shop' => $shop,
+            'customers' => $customers,
+            'products' => $products,
+            'sendPercels' => $sentPercels
         ]);    
     }
 }

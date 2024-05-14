@@ -43,4 +43,9 @@ class Shop extends Model
     {
         return $this->hasMany(Product::class);    
     }
+
+    public function percel()  
+    {
+        return $this->hasMany(Percel::class);    
+    }
 }

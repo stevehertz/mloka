@@ -12,4 +12,7 @@ return [
         'import' => ':title successfully imported',
         'errors' => 'Something went wrong'
     ],
+    'percels' => [
+        'sent' => 'Percel successfully sent',
+    ],
 ];

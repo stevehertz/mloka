@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\Gender;
+use App\Enums\PercelStatus;
 use App\Enums\ProductSizeUnits;
 use App\Enums\ProductWeightUnits;
 use Illuminate\Support\Facades\Facade;
@@ -193,7 +194,8 @@ return [
         'Countries' => Monarobase\CountryList\CountryListFacade::class,
         'Gender' => Gender::class,
         'ProductWeightUnits' => ProductWeightUnits::class,
-        'ProductSizeUnits' => ProductSizeUnits::class
+        'ProductSizeUnits' => ProductSizeUnits::class,
+        'PercelStatus' => PercelStatus::class
     ])->toArray(),
 
 ];

@@ -30,14 +30,14 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>150</h3>
+                            <h3>{{ $sendPercels }}</h3>
 
                             <p>Sent Percels</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-book-reader"></i>
                         </div>
-                        <a href="#" class="small-box-footer">
+                        <a href="{{ route('percels.index', $shop->id) }}" class="small-box-footer">
                             More info <i class="fas fa-arrow-circle-right"></i>
                         </a>
                     </div>
@@ -62,14 +62,16 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>44</h3>
+                            <h3>{{ $customers }}</h3>
 
-                            <p>User Registrations</p>
+                            <p>Customers</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-person-add"></i>
+                            <i class="fas fa-users"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('customers.index', $shop->id) }}" class="small-box-footer">
+                            More info <i class="fas fa-arrow-circle-right"></i>
+                        </a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -77,14 +79,14 @@
                     <!-- small box -->
                     <div class="small-box bg-danger">
                         <div class="inner">
-                            <h3>65</h3>
+                            <h3>{{ $products }}</h3>
 
-                            <p>Unique Visitors</p>
+                            <p>Products</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-pie-graph"></i>
+                            <i class="fas fa-shopping-bag"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('products.index', $shop->id) }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -121,7 +123,7 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-8">
+                                <div class="col-md-12">
                                     <p class="text-center">
                                         <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
                                     </p>
@@ -131,48 +133,6 @@
                                         <canvas id="salesChart" height="180" style="height: 180px;"></canvas>
                                     </div>
                                     <!-- /.chart-responsive -->
-                                </div>
-                                <!-- /.col -->
-                                <div class="col-md-4">
-                                    <p class="text-center">
-                                        <strong>Goal Completion</strong>
-                                    </p>
-
-                                    <div class="progress-group">
-                                        Add Products to Cart
-                                        <span class="float-right"><b>160</b>/200</span>
-                                        <div class="progress progress-sm">
-                                            <div class="progress-bar bg-primary" style="width: 80%"></div>
-                                        </div>
-                                    </div>
-                                    <!-- /.progress-group -->
-
-                                    <div class="progress-group">
-                                        Complete Purchase
-                                        <span class="float-right"><b>310</b>/400</span>
-                                        <div class="progress progress-sm">
-                                            <div class="progress-bar bg-danger" style="width: 75%"></div>
-                                        </div>
-                                    </div>
-
-                                    <!-- /.progress-group -->
-                                    <div class="progress-group">
-                                        <span class="progress-text">Visit Premium Page</span>
-                                        <span class="float-right"><b>480</b>/800</span>
-                                        <div class="progress progress-sm">
-                                            <div class="progress-bar bg-success" style="width: 60%"></div>
-                                        </div>
-                                    </div>
-
-                                    <!-- /.progress-group -->
-                                    <div class="progress-group">
-                                        Send Inquiries
-                                        <span class="float-right"><b>250</b>/500</span>
-                                        <div class="progress progress-sm">
-                                            <div class="progress-bar bg-warning" style="width: 50%"></div>
-                                        </div>
-                                    </div>
-                                    <!-- /.progress-group -->
                                 </div>
                                 <!-- /.col -->
                             </div>
