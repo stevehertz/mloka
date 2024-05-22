@@ -1,4 +1,4 @@
-@extends('layouts.app_shops')
+@extends('layouts.app')
 
 @section('title', 'Shops | ' . config('app.name'))
 
@@ -32,8 +32,8 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="card-tools">
-                                <a href="{{ route('shops.register') }}" class="btn btn-block btn-sm btn-outline-primary">
-                                    Register Shop
+                                <a href="#" class="btn btn-block btn-sm btn-outline-primary">
+                                    @lang('buttons.shops.new')
                                 </a>
                             </div>
                         </div>
@@ -44,7 +44,10 @@
                                         <tr>
                                             <th style="width: 10px">#</th>
                                             <th>Shop Name</th>
-                                            <th>Number of locks</th>
+                                            <th>Address</th>
+                                            <th>City</th>
+                                            <th>State</th>
+                                            <th>Country</th>
                                             <th style="width: 40px">Select</th>
                                         </tr>
                                     </thead>
@@ -58,7 +61,16 @@
                                                     </a>
                                                 </td>
                                                 <td>
-
+                                                    {{ $shop->address }}
+                                                </td>
+                                                <td>
+                                                    {{ $shop->city }}
+                                                </td>
+                                                <td>
+                                                    {{ $shop->state }}
+                                                </td>
+                                                <td>
+                                                    {{ $shop->country }}
                                                 </td>
                                                 <td>
                                                     <a href="{{ route('dashboard', $shop->id) }}"

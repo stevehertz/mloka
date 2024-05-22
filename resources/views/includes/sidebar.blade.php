@@ -80,7 +80,7 @@
                 </li>
                 <li class="nav-header">SHOPS</li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('shops.index', $shop->id) }}" class="nav-link  {{ Route::is('shops.index', $shop->id) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-building"></i>
                         <p>
                             My Shops

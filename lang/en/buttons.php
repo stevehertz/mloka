@@ -7,4 +7,7 @@ return [
         'delete' => 'Delete',
         'import' => 'Import'
     ],
+    'shops' => [
+        'new' => 'Add Shop',
+    ]
 ]; 

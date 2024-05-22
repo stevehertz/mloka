@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Shops;
 
 use App\Models\Shop;
+use App\Http\Controllers\Controller;
 use App\Repositories\ShopRepository;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UpdateShopRequest;
@@ -23,12 +24,32 @@ class ShopController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Shop $shop)
     {
         //
         $user = Auth::user();
+        $data = $this->shopRepository->getUserShops($user);
+        return view('shops.index', [
+            'data' => $data,
+            'shop' => $shop
+        ]);
+    }
+
+    /**
+     * Display default listing of the resource.
+     */
+    public function default()  
+    {
+        $user = Auth::user();
         $data = $this->shopRepository->getDefaultUserShop($user);
-        return redirect()->route('dashboard', $data->id);
+        if($data)
+        {
+            return redirect()->route('dashboard', $data->id);
+        } else 
+        {
+            return redirect()->route('shops.register');
+        }
+        
     }
 
     /**
@@ -38,10 +59,6 @@ class ShopController extends Controller
     {
         //
         // $countries = Country
-        $countries = CountryList::getList('en');
-        return view('shops.edit', [
-            'countries' => $countries
-        ]);
     }
 
     /**
@@ -75,9 +92,11 @@ class ShopController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Shop $shop)
+    public function edit($id)
     {
         //
+        $data = $this->shopRepository->show($id);
+        return view('');
     }
 
     /**

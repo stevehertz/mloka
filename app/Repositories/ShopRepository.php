@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Models\Shop;
 use App\Models\User;
 use App\Enums\DefaultStatus;
+use Monarobase\CountryList\CountryList;
 
 class ShopRepository
 {
@@ -63,5 +64,17 @@ class ShopRepository
             'updated_by' => data_get($attributes, 'user_id'),
         ]);
         return $shop;
+    }
+
+    public function show($id)  
+    {
+        $shop = Shop::with(['customer', 'product', 'percel'])->findOrFail($id);
+        return $shop;
+    }
+
+    public function countryLists()  
+    {
+        $countries = CountryList::getList('en');
+        return $countries;  
     }
 }
