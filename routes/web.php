@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\Settings\SettingsController;
 use App\Http\Controllers\Shops\ShopController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -27,4 +28,10 @@ Route::prefix('shops')->name('shops.')->group(function(){
     Route::post('/register', [ShopController::class, 'store']);
     Route::post('/{shop}/add/shop', [ShopController::class, 'addShop'])->name('add.shop');
     Route::delete('/{shop}/delete', [ShopController::class, 'destroy'])->name('delete');
+});
+
+Route::prefix('settings')->name('settings.')->group(function(){
+
+    Route::get('/{shop}', [SettingsController::class, 'index'])->name('index');
+
 });

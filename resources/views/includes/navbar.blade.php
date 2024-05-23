@@ -109,11 +109,11 @@
                 <i class="far fa-user"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
-                <a href="#" class="dropdown-item">
+                <a href="{{ route('profile.index', $shop->id) }}" class="dropdown-item">
                     <i class="fas fa-user mr-2"></i> profile
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
+                <a href="{{ route('settings.index', $shop->id) }}" class="dropdown-item">
                     <i class="fas fa-cogs mr-2"></i> settings
                 </a>
                 <div class="dropdown-divider"></div>
