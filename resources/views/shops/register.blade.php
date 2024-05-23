@@ -107,13 +107,19 @@
         <div class="row">
             <!-- /.col -->
             <div class="col-12">
-                <button type="submit" class="btn btn-block btn-outline-primary">
+                <button type="submit" class="btn btn-block btn-outline-success">
                     @lang('buttons.general.create')
                 </button>
             </div>
             <!-- /.col -->
         </div>
-        <br>
+    </form>
+    <a href="{{ route('logout') }}" class="text-center btn btn-link"
+        onclick="event.preventDefault(); document.getElementById('shopLogoutForm').submit();">
+        <i class="fas fa-sign-out-alt mr-2"></i> {{ __('Logout') }}
+    </a>
+    <form id="shopLogoutForm" action="{{ route('logout') }}" method="POST" class="d-none">
+        @csrf
     </form>
 @endsection
 

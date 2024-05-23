@@ -32,27 +32,32 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="card-tools">
-                                <a href="#" class="btn btn-block btn-sm btn-outline-primary">
+                                <a href="javascript:void(0)" id="addShopBtn"
+                                    class="btn btn-block btn-sm btn-outline-primary">
                                     @lang('buttons.shops.new')
                                 </a>
                             </div>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered">
+                                <table id="example1" class="table table-bordered">
                                     <thead>
                                         <tr>
                                             <th style="width: 10px">#</th>
                                             <th>Shop Name</th>
+                                            <th>Logo</th>
                                             <th>Address</th>
-                                            <th>City</th>
-                                            <th>State</th>
+                                            <th>County</th>
+                                            <th>Location</th>
                                             <th>Country</th>
-                                            <th style="width: 40px">Select</th>
+                                            <th>Phone Number</th>
+                                            <th>Email Address</th>
+                                            <th>Default</th>
+                                            <th style="width: 40px">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($data as $shop)
+                                        @foreach ($data as $shop)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>
@@ -61,29 +66,52 @@
                                                     </a>
                                                 </td>
                                                 <td>
+
+                                                </td>
+                                                <td>
                                                     {{ $shop->address }}
                                                 </td>
                                                 <td>
-                                                    {{ $shop->city }}
+                                                    {{ $shop->county }}
                                                 </td>
                                                 <td>
-                                                    {{ $shop->state }}
+                                                    {{ $shop->location }}
                                                 </td>
                                                 <td>
                                                     {{ $shop->country }}
                                                 </td>
                                                 <td>
+                                                    {{ $shop->phone }}
+                                                </td>
+                                                <td>
+                                                    {{ $shop->email }}
+                                                </td>
+                                                <td>
+                                                    @if ($shop->default)
+                                                        <span class="badge badge-success">
+                                                            Default
+                                                        </span>
+                                                    @else
+                                                        <span class="badge badge-danger">
+                                                            others
+                                                        </span>
+                                                    @endif
+                                                </td>
+                                                <td>
                                                     <a href="{{ route('dashboard', $shop->id) }}"
-                                                        class="btn btn-block btn-outline-primary btn-sm">
+                                                        class="btn btn-sm btn-outline-primary btn-sm">
                                                         <i class="fas fa-eye"></i>
                                                     </a>
+                                                    @if (!$shop->default)
+                                                        <button data-id="{{ $shop->id }}"
+                                                            class="btn btn-sm btn-outline-danger deleteShopBtn">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    @endif
+
                                                 </td>
                                             </tr>
-                                        @empty
-                                            <tr>
-                                                <td colspan="4" class="text-center">No Shops Found. Please Register!</td>
-                                            </tr>
-                                        @endforelse
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -94,7 +122,101 @@
             </div>
             <!-- /.row -->
         </div><!-- /.container-fluid -->
+        @include('shops.modal.addShop')
     </div>
     <!-- /.content -->
-
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $(document).on('click', '#addShopBtn', function(e) {
+                e.preventDefault();
+                $('#addShopForm').trigger("reset");
+                $('#addShopModal').modal('show');
+            });
+
+            $('#addShopForm').submit(function(e) {
+                e.preventDefault();
+                let form = $(this);
+                let formData = new FormData(form[0]);
+                let path = '{{ route('shops.add.shop', $shop->id) }}';
+                $.ajax({
+                    type: "POST",
+                    url: path,
+                    data: formData,
+                    dataType: "json",
+                    processData: false,
+                    contentType: false,
+                    beforeSend: function() {
+                        form.find('button[type=submit]').html(
+                            '<i class="fa fa-spinner fa-spin"></i>');
+                        form.find('button[type=submit]').attr('disabled', true);
+                    },
+                    complete: function() {
+                        form.find('button[type=submit]').html(
+                            '{{ trans('buttons.general.create') }}');
+                        form.find('button[type=submit]').attr('disabled', false);
+                    },
+                    success: function(data) {
+                        if (data['status']) {
+                            toastr.success(data['message']);
+                            $('#addShopForm')[0].reset();
+                            setTimeout(() => {
+                                location.reload();
+                            }, 1000);
+                        }
+                    },
+                    error: function(data) {
+                        var errors = data.responseJSON;
+                        var errorsHtml = '<ul>';
+                        $.each(errors['errors'], function(key, value) {
+                            errorsHtml += '<li>' + value + '</li>';
+                        });
+                        errorsHtml += '</ul>';
+                        toastr.error(errorsHtml);
+                    }
+                });
+            });
+
+            $(document).on('click', '.deleteShopBtn', function(e) {
+                e.preventDefault();
+                let shop_id = $(this).data('id');
+                let path = '{{ route('shops.delete', ':shop') }}';
+                path = path.replace(":shop", shop_id);
+                let token = '{{ csrf_token() }}';
+                Swal.fire({
+                    title: '@lang('notifications.delete_alert')',
+                    text: '@lang('notifications.delete_message')',
+                    showDenyButton: false,
+                    showCancelButton: true,
+                    confirmButtonText: 'Delete',
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            type: "DELETE",
+                            url: path,
+                            data: {
+                                _token: token
+                            },
+                            dataType: "json",
+                            success: function(data) {
+                                if (data['status']) {
+                                    toastr.success(data['message']);
+                                    setTimeout(() => {
+                                        location.reload();
+                                    }, 500);
+                                }
+                            }
+                        });
+                    } else if (result.isDenied) {
+                        Swal.fire('Changes are not saved', '', 'info')
+                    }
+                });
+            });
+
+
+        });
+    </script>
+@endpush

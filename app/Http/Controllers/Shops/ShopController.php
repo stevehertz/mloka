@@ -29,10 +29,12 @@ class ShopController extends Controller
     {
         //
         $user = Auth::user();
+        $counties = $this->shopRepository->counties();
         $data = $this->shopRepository->getUserShops($user);
         return view('shops.index', [
             'data' => $data,
-            'shop' => $shop
+            'shop' => $shop,
+            'counties' => $counties,
         ]);
     }
 
@@ -82,6 +84,21 @@ class ShopController extends Controller
         }
     }
 
+     /**
+     * Add shop a newly created resource in storage.
+     */
+    public function addShop(StoreShopRequest $request)  
+    {
+        $data = $request->except("_token");
+        if($this->shopRepository->storeShop($data))
+        {
+            return response()->json([
+                'status' => true,
+                'message' => trans('alerts.general.created', ['title' => 'Shop'])
+            ]);
+        }
+    }
+
     /**
      * Display the specified resource.
      */
@@ -114,5 +131,13 @@ class ShopController extends Controller
     public function destroy(Shop $shop)
     {
         //
+        $shop = $this->shopRepository->destroyShop($shop);
+        if($shop)
+        {
+            return response()->json([
+                'status' => true,
+                'message' => trans('alerts.general.deleted', ['title' => 'shop'])
+            ]);
+        }
     }
 }

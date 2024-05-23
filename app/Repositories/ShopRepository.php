@@ -49,13 +49,10 @@ class ShopRepository
         $shop = Shop::create([
             'user_id' => data_get($attributes, 'user_id'),
             'name' => data_get($attributes, 'name'),
+            'logo' => 'noimage.png',
             'address' => data_get($attributes, 'address'),
-            'city' => data_get($attributes, 'city'),
-            'state' => data_get($attributes, 'state'),
-            'postal_code' => data_get($attributes, 'postal_code'),
-            'country' => data_get($attributes, 'country'),
-            'latitude' => data_get($attributes, 'latitude'),
-            'longitude' => data_get($attributes, 'longitude'),
+            'county' => data_get($attributes, 'county'),
+            'location' => data_get($attributes, 'location'),
             'phone' => data_get($attributes, 'phone'),
             'email' => data_get($attributes, 'email'),
             'default' => DefaultStatus::OTHER_SHOP,
@@ -81,5 +78,14 @@ class ShopRepository
     {
         $counties = KenyaCounty::all();
         return $counties;
+    }
+
+    public function destroyShop(Shop $shop)  
+    {
+        if($shop->delete())
+        {
+            return true;
+        }  
+        return false;  
     }
 }

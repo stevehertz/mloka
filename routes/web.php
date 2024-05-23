@@ -25,4 +25,6 @@ Route::get('/{shop}/dashboard', [DashboardController::class, 'index'])->name('da
 Route::prefix('shops')->name('shops.')->group(function(){
     Route::get('/register', [ShopController::class, 'create'])->name('register');
     Route::post('/register', [ShopController::class, 'store']);
+    Route::post('/{shop}/add/shop', [ShopController::class, 'addShop'])->name('add.shop');
+    Route::delete('/{shop}/delete', [ShopController::class, 'destroy'])->name('delete');
 });
