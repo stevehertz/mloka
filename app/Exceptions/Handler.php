@@ -27,4 +27,10 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    // Customize the render method to handle different types of exceptions
+    public function render($request, Throwable $exception)
+    {
+        return parent::render($request, $exception);
+    }
 }

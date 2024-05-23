@@ -24,11 +24,9 @@ class StoreShopRequest extends FormRequest
         return [
             //
             'name' => ['required', 'string', 'max:255'],
-            'address' => ['required'],
-            'city' => ['required'],
-            'state' => ['required'],
-            'postal_code' => ['required'],
-            'country' => ['required']
+            'address' => ['nullable'],
+            'county' => ['nullable'],
+            'location' => ['nullable']
         ];
     }
 }

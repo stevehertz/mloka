@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\Shops\ShopController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +18,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PagesController::class, 'index']);
-
 Auth::routes();
-
 Route::get('/{shop}/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+
+Route::prefix('shops')->name('shops.')->group(function(){
+    Route::get('/register', [ShopController::class, 'create'])->name('register');
+    Route::post('/register', [ShopController::class, 'store']);
+});

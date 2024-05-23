@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Shops;
 
+use Exception;
 use App\Models\Shop;
 use App\Http\Controllers\Controller;
 use App\Repositories\ShopRepository;
@@ -14,7 +15,7 @@ class ShopController extends Controller
 {
 
     private $shopRepository;
-
+    
     public function __construct(ShopRepository $shopRepository)
     {
         $this->shopRepository = $shopRepository;
@@ -35,6 +36,11 @@ class ShopController extends Controller
         ]);
     }
 
+    public function test_error()  
+    {
+        throw new Exception("Testing error display");
+    }
+
     /**
      * Display default listing of the resource.
      */
@@ -45,11 +51,8 @@ class ShopController extends Controller
         if($data)
         {
             return redirect()->route('dashboard', $data->id);
-        } else 
-        {
-            return redirect()->route('shops.register');
         }
-        
+        return redirect()->route('shops.register');
     }
 
     /**
@@ -58,7 +61,12 @@ class ShopController extends Controller
     public function create()
     {
         //
-        // $countries = Country
+        $countries = $this->shopRepository->countryLists();
+        $counties = $this->shopRepository->counties();
+        return view('shops.register', [
+            'countries' => $countries,
+            'counties' => $counties
+        ]);
     }
 
     /**
@@ -70,15 +78,8 @@ class ShopController extends Controller
         $data = $request->except("_token");
         if($this->shopRepository->registerShop($data))
         {
-            return response()->json([
-                'status' => true,
-                'message' => trans('alerts.general.created', ['title' => 'shop'])
-            ], 200);
+            return redirect()->route('shops.default');
         }
-        return response()->json([
-            'status' => false,
-            'errors' => [trans('alerts.general.errors')]
-        ], 401);
     }
 
     /**

@@ -5,6 +5,8 @@ return [
         'fields' => [
             'name' => 'Shop Name',
             'address' => 'Shop Address',
+            'county' => 'County',
+            'location' => 'Location',
             'city' => 'City',
             'state' => 'State',
             'postal_code' => 'Postal Code',

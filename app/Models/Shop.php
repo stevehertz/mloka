@@ -14,10 +14,10 @@ class Shop extends Model
     protected $fillable = [
         'user_id',
         'name',
+        'logo',
         'address',
-        'city',
-        'state',
-        'postal_code',
+        'county',
+        'location',
         'country',
         'latitude',
         'longitude',
@@ -33,6 +33,11 @@ class Shop extends Model
     protected $dates = [
         'deleted_at'
     ];
+
+    public function user()  
+    {
+        return $this->belongsTo(User::class);    
+    }
 
     public function customer()  
     {
