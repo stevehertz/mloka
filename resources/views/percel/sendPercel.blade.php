@@ -25,8 +25,45 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>
+                                {{ count($customers) }}
+                            </h3>
+                            <p>Customers</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <a href="javascript:void(0)" id="newCustomerBtn" class="small-box-footer">
+                            Add New <i class="fas fa-plus-circle"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3>{{ count($products) }}</h3>
+                            <p>Products</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                        <a href="javascript:void(0)" id="newProductBtn" class="small-box-footer">
+                            Add New <i class="fas fa-plus-circle"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- ./col -->
+            </div>
+            <!--/.row -->
+            <div class="row">
                 <div class="col-12">
-                    <div class="card card-success">
+                    <div class="card card-outline-success">
                         <div class="card-header">
                             <h3 class="card-title">
                                 Send Percel
@@ -96,6 +133,8 @@
                 </div>
             </div>
         </div>
+        @include('percel.modals.addCustomer')
+        @include('percel.modals.addProducts')
     </section>
 
 @endsection

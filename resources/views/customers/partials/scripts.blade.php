@@ -47,7 +47,6 @@
                     toastr.error(errorsHtml);
                 }
             });
-
         });
 
         $(document).on('click', '#importCustomersBtn', function(e) {

@@ -31,8 +31,12 @@ class PercelController extends Controller
     {
         //
         $data = $this->percelRepository->getShopSendPercel($shop);
+        $customers = $this->customersRepository->fetchAllCustomersForShop($shop);
+        $products = $this->productsRepository->fetchProductsForShop($shop);
         return view('percel.index', [
             'data' => $data,
+            'customers' => $customers,
+            'products' => $products,
             'shop' => $shop
         ]);
     }
