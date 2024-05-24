@@ -4,6 +4,7 @@ return [
         'title' => 'Shops',
         'fields' => [
             'name' => 'Shop Name',
+            'logo' => 'Logo',
             'address' => 'Shop Address',
             'county' => 'County',
             'location' => 'Location',

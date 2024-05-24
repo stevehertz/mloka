@@ -31,7 +31,6 @@ Route::prefix('shops')->name('shops.')->group(function(){
 });
 
 Route::prefix('settings')->name('settings.')->group(function(){
-
     Route::get('/{shop}', [SettingsController::class, 'index'])->name('index');
-
+    Route::put('/{shop}', [SettingsController::class, 'update']);
 });

@@ -80,6 +80,24 @@ class ShopRepository
         return $counties;
     }
 
+    public function updateShop(array $attributes, $path, Shop $shop) 
+    {
+        $shop->update([
+            'user_id' => data_get($attributes, 'user_id'),
+            'name' => data_get($attributes, 'name'),
+            'logo' => $path,
+            'address' => data_get($attributes, 'address'),
+            'county' => data_get($attributes, 'county'),
+            'location' => data_get($attributes, 'location'),
+            'phone' => data_get($attributes, 'phone'),
+            'email' => data_get($attributes, 'email'),
+            'default' => DefaultStatus::OTHER_SHOP,
+            'updated_by' => data_get($attributes, 'user_id'),
+        ]);
+
+        return $shop;
+    }
+
     public function destroyShop(Shop $shop)  
     {
         if($shop->delete())
