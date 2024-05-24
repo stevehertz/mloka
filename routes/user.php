@@ -15,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('profile')->name('profile.')->group(function () {
-
     Route::get('/{shop}', [ProfileController::class, 'index'])->name('index');
+    Route::post('/{shop}', [ProfileController::class, 'update']);
 });

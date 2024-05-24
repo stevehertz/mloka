@@ -106,7 +106,10 @@
 
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#" style="color: #fff !important;">
-                <i class="far fa-user"></i>
+                <img src="@if (Auth::user()->profile == 'noimage.png') {{ asset('storage/users/' . Auth::user()->profile) }}
+                @else
+                {{ asset('storage/' . Auth::user()->profile) }} @endif"
+                    alt="{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}" class="img-circle img-size-32 mr-2"> {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
             </a>
             <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
                 <a href="{{ route('profile.index', $shop->id) }}" class="dropdown-item">

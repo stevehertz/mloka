@@ -23,7 +23,8 @@ return [
             'last_name' => 'Last Name',
             'phone' => 'Phone Number',
             'email' => 'Email Address',
-            'gender' => 'Gender'
+            'gender' => 'Gender',
+            'profile' => 'Profile'
         ],
     ],
     'customers' => [
